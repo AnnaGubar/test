@@ -51,7 +51,7 @@
       const rootref = document.querySelector("#root");
       const btnRef = document.querySelector(".btn");
       const array = [
-        "Как сказано в Писании",
+        "Как сказано в Писании:",
         "ушоб было криво",
         "максимально уродски",
         "и ХЗ как работало",
@@ -62,9 +62,37 @@
         btnRef.remove();
 
         rootref.insertAdjacentHTML(
-          "afterbegin",
-          array.map((arr) => `<p class="list-item">${arr}</p>`).join("")
+          "beforeend",
+          `<p class='list-item'>${array[0]}</p>`
         );
+
+        setTimeout(() => {
+          rootref.insertAdjacentHTML(
+            "beforeend",
+            `<p class='list-item'>${array[1]}</p>`
+          );
+          console.log("таймер на 3 сек");
+          showText(array);
+        }, 3000);
+
+        function showText(array) {
+          let current = 2;
+          let id = "";
+
+          id = setInterval(function () {
+            rootref.insertAdjacentHTML(
+              "beforeend",
+              `<p class='list-item'>${array[current]}</p>`
+            );
+            console.log("таймер на 2 сек");
+            current++;
+            if (current >= array.length) {
+              console.log("все!");
+              clearInterval(id);
+              return;
+            }
+          }, 2000);
+        }
       });
     </script>
   </body>
