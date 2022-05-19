@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST</title>
+    <style>
+      .container {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+      }
+
+      .btn {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 200px;
+
+        box-sizing: content-box;
+        border-radius: 20px;
+        height: 50px;
+        width: 200px;
+        font-size: 18px;
+        border-color: transparent;
+        color: aquamarine;
+        background-color: blueviolet;
+        transition: all 400ms ease-in;
+      }
+
+      .btn:hover {
+        color: #ffffff;
+        background-color: #25189b;
+        font-size: 20px;
+      }
+
+      .list-item {
+        font-size: 22px;
+        font-weight: 600;
+        color: #2449b7;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="container">
+      <button type="button" class="btn">Надо нажать</button>
+    </div>
+    <script>
+      const rootref = document.querySelector("#root");
+      const btnRef = document.querySelector(".btn");
+      const array = [
+        "Как сказано в Писании",
+        "ушоб было криво",
+        "максимально уродски",
+        "и ХЗ как работало",
+        "иначе это не программирование, а лабуда от Нечистивого",
+      ];
+
+      btnRef.addEventListener("click", (e) => {
+        btnRef.remove();
+
+        rootref.insertAdjacentHTML(
+          "afterbegin",
+          array.map((arr) => `<p class="list-item">${arr}</p>`).join("")
+        );
+      });
+    </script>
+  </body>
+</html>
